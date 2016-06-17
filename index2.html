@@ -1,0 +1,82 @@
+<html>
+<head>
+	<title>What Do</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/rawr.css">
+</head>
+<body>
+	<div class="panel-info">
+		<div class="navbar">
+			<a href="" align="right" class="btn btn-default">+</a>
+			<a href="" align="right" class="btn btn-default">...</a>
+			</div>
+				<div class="list">
+					<div class="h4 pane" >			
+					Do homework <br/> 
+					due at June 10, 2016 
+					<a href="" class="btn btn-default">done</a>
+					</div>
+					
+					
+					<div class="h4 pane">
+					Make sandwiches<br/> 
+					due at June 12, 2016
+					<a href="" class="btn btn-default">done</a>
+					</div>
+					
+				</div>
+			
+	</div>
+	
+	<script>
+	addtodo();
+	function addtodo(){
+	var container = document.createElement("DIV");
+	var taskname = document.createTextNode("texthere");
+	var taskdate = document.createTextNode("date here");
+	var btn = document.createElement("BUTTON");
+	var buttontxt = document.createTextNode("done");
+	 var br = document.createElement("br");
+	
+	container.setAttribute("class","h4 pane");
+
+	btn.setAttribute("class","btn btn-default");
+
+	container.appendChild(taskname);
+	container.appendChild(br);
+	container.appendChild(taskdate);
+	btn.appendChild(buttontxt);
+	container.appendChild(btn);
+	
+	
+	document.body.appendChild(container);
+	
+	}
+	function connectDB(){
+		var connection = new ActiveXObject("ADODB.Connection") ;
+
+		var connectionstring="Data Source=jdbc:mysql://localhost:3306/securde;User ID=root;Password=normandy;Provider=SQLOLEDB";
+
+		connection.Open(connectionstring);
+		var rs = new ActiveXObject("ADODB.Recordset");
+
+		rs.Open("SELECT * FROM uacc", connection);
+		rs.MoveFirst
+		while(!rs.eof)
+		{
+		   document.write(rs.fields(1));
+		   rs.movenext;
+		}
+
+		rs.close;
+		connection.close;
+	}
+	connectDB();
+	
+
+	
+	</script>
+	
+</body>
+</html>

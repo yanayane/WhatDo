@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>What Do</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/rawr.css">
+	<script src="js/taffy.js"></script>
+</head>
+<body>
+	<div class="panel-info">
+		<div class="navbar">
+			<a onclick="addtask();" class="btn btn-default">add</a>
+		</div>
+		<div class="list">
+			
+		</div>
+			
+	</div>
+	
+	<script>
+	var tasks_db = TAFFY([
+		  { "id"  : 1,
+			"name"  : "Do homework",
+			"due" : "June 20, 2016",
+			"cat" : "School"
+		  },
+		  { "id"  : 2,
+			"name"  : "Make sandwiches",
+			"due" : "July 20, 2016",
+			"cat" : "Home"
+		  }
+		]);
+		
+	refresh();
+	
+	function refresh(){
+		var i=0;
+		if(tasks_db().first()){
+			tasks_db().each(function(r){ addtodo(r.name,r.due)});
+		}
+			
+	}
+	
+	function addtask(){
+		
+	}
+	
+	function addtodo(name,date){
+		var container = document.createElement("DIV");
+		var taskname = document.createTextNode(name);
+		var taskdate = document.createTextNode(date);
+		var btn = document.createElement("BUTTON");
+		var buttontxt = document.createTextNode("done");
+		var br = document.createElement("br");
+		
+		container.setAttribute("class","h4 pane");
+
+		btn.setAttribute("class","btn btn-default");
+
+		container.appendChild(taskname);
+		container.appendChild(br);
+		container.appendChild(taskdate);
+		btn.appendChild(buttontxt);
+		container.appendChild(btn);
+		
+		
+		document.body.appendChild(container);
+		
+	}
+	
+	</script>
+	
+</body>
+</html>
